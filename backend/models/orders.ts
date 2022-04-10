@@ -17,4 +17,17 @@ export class Orders {
     const result = await prisma.order.create({ data })
     return result
   }
+
+  async listOrders(): Promise<Order[]> {
+    const orders = await prisma.order.findMany()
+    return orders
+  }
+
+  async listMyOrders(userId: string): Promise<Order[]> {
+    const orders = await prisma.order.findMany({
+      where: { userId },
+      include: { listing: true },
+    })
+    return orders
+  }
 }

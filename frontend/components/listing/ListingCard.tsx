@@ -7,8 +7,6 @@ interface Props {
 }
 
 export default function ListingCard({ listing }: Props) {
-  console.log(listing)
-
   return (
     <Card component={NextLinkComposed} to={`/listings/${listing.id}`} style={{ cursor: 'pointer' }}>
       <Box p={2}>
