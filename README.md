@@ -2,6 +2,50 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
+1. Copy the `.env.example` file in to the same directory and name it
+   `.env.local`
+2. Inside the `.env.local` file, add values to the variables you need for local
+   development
+3. Now that the environment variables are set, install Docker and Docker Compose
+   to run a local PostgreSQL database.
+   ([Install docs](https://docs.docker.com/compose/install/))
+4. After getting Docker Compose installed, run the following command in the root
+   directory of the project to start the local database (the first time you run
+   this command, the database creds from `.env.local` will be applied):
+
+```bash
+docker-compose up
+```
+
+6. Now that the database is running, run the following command in the root
+   directory of the project to create the database schema:
+
+```bash
+npm run prisma:migrate -- dev
+```
+
+7. Finally, start the dev app and see what breaks!
+
+```bash
+npm run dev
+```
+
+## Seeding Data
+
+Seeding data will instert fake user and process data into the database. First,
+we need to insert the process data, which includes a user, a role, a queue, some
+steps, and a stage. To insert the data, run
+
+```bash
+npm run prisma:migrate reset
+```
+
+To get projects imported into the system, login into the dev appilcation with:
+
+```
+
+## Getting Started
+
 To run the app, you need to add some environment vars to configure (1) a local database connection and (2) Auth0:
 
 For the database, make sure you have postgresql installed, and then create a db. If on macOS:
